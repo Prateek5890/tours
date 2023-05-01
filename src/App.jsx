@@ -31,6 +31,14 @@ const App = () => {
     setToursList(updatedToursList);
   };
 
+  if (isLoading) {
+    return (
+      <main>
+        <Loading />
+      </main>
+    );
+  }
+
   if (toursList.length === 0) {
     return (
       <main>
@@ -52,14 +60,7 @@ const App = () => {
 
   return (
     <main>
-      {isLoading && <Loading />}
-      {!isLoading && (
-        <Tours
-          toursList={toursList}
-          deleteTours={deleteTours}
-          setIsLoading={setIsLoading}
-        />
-      )}
+      <Tours toursList={toursList} deleteTours={deleteTours} />
     </main>
   );
 };
